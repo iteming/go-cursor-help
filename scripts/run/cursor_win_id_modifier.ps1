@@ -316,7 +316,7 @@ function Remove-CursorTrialFolders {
         Write-Host "$BLUE🔧 [修复]$NC 预创建必要的目录结构以避免权限问题..."
 
         $cursorAppData = "$env:APPDATA\Cursor"
-        $cursorLocalAppData = "$env:LOCALAPPDATA\cursor"
+        $cursorLocalAppData = "D:\Program Files\cursor"
         $cursorUserProfile = "$env:USERPROFILE\.cursor"
 
         # 创建主要目录
@@ -367,7 +367,7 @@ function Restart-CursorAndWait {
 
         # 尝试使用备用路径
         $backupPaths = @(
-            "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe",
+            "D:\Program Files\cursor\Cursor.exe",
             "$env:PROGRAMFILES\Cursor\Cursor.exe",
             "$env:PROGRAMFILES(X86)\Cursor\Cursor.exe"
         )
@@ -744,7 +744,7 @@ function Test-CursorEnvironment {
 
     # 检查Cursor安装
     $cursorPaths = @(
-        "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe",
+        "D:\Program Files\cursor\Cursor.exe",
         "$env:PROGRAMFILES\Cursor\Cursor.exe",
         "$env:PROGRAMFILES(X86)\Cursor\Cursor.exe"
     )
@@ -1095,7 +1095,7 @@ function Start-CursorToGenerateConfig {
 
     # 查找Cursor可执行文件
     $cursorPaths = @(
-        "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe",
+        "D:\Program Files\cursor\Cursor.exe",
         "$env:PROGRAMFILES\Cursor\Cursor.exe",
         "$env:PROGRAMFILES(X86)\Cursor\Cursor.exe"
     )
@@ -1281,7 +1281,7 @@ Write-Host ""
 function Get-CursorVersion {
     try {
         # 主要检测路径
-        $packagePath = "$env:LOCALAPPDATA\\Programs\\cursor\\resources\\app\\package.json"
+        $packagePath = "D:\\Program Files\\cursor\\resources\\app\\package.json"
         
         if (Test-Path $packagePath) {
             $packageJson = Get-Content $packagePath -Raw | ConvertFrom-Json
@@ -1292,7 +1292,7 @@ function Get-CursorVersion {
         }
 
         # 备用路径检测
-        $altPath = "$env:LOCALAPPDATA\\cursor\\resources\\app\\package.json"
+        $altPath = "D:\\Program Files\\cursor\\resources\\app\\package.json"
         if (Test-Path $altPath) {
             $packageJson = Get-Content $altPath -Raw | ConvertFrom-Json
             if ($packageJson.version) {
@@ -1386,7 +1386,7 @@ function Close-CursorProcessAndSaveInfo {
         Write-Host "$BLUE💡 [提示]$NC 未发现 $processName 进程运行"
         # 尝试找到Cursor的安装路径
         $cursorPaths = @(
-            "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe",
+            "D:\Program Files\cursor\Cursor.exe",
             "$env:PROGRAMFILES\Cursor\Cursor.exe",
             "$env:PROGRAMFILES(X86)\Cursor\Cursor.exe"
         )
@@ -1407,7 +1407,7 @@ function Close-CursorProcessAndSaveInfo {
             Write-Host "$YELLOW⚠️  [警告]$NC 未找到Cursor安装路径，将使用默认路径"
             $global:CursorProcessInfo = @{
                 ProcessName = "Cursor"
-                Path = "$env:LOCALAPPDATA\Programs\cursor\Cursor.exe"
+                Path = "D:\Program Files\cursor\Cursor.exe"
                 StartTime = $null
             }
         }

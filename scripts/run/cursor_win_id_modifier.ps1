@@ -37,7 +37,8 @@ function Modify-CursorJSFiles {
         $alternatePaths = @(
             "${env:ProgramFiles}\Cursor",
             "${env:ProgramFiles(x86)}\Cursor",
-            "${env:USERPROFILE}\AppData\Local\Programs\Cursor"
+            "${env:USERPROFILE}\AppData\Local\Programs\Cursor",
+            "D:\Program Files\cursor"
         )
 
         foreach ($path in $alternatePaths) {
